@@ -32,7 +32,7 @@ Route::group(['middleware'=>['verifyToken']],function(){
     Route::put('/update_course/{course_code}',[AppController::class, 'updateCourse']);
     //mentor handle
     Route::get('/show_mentor',[Appcontroller::class, 'showMentor']);
-    Route::delete('/delete_mentor/{mentro_id}',[AppController::class, 'deleteMentor']);
+    Route::delete('/delete_mentor/{mentor_id}',[AppController::class, 'deleteMentor']);
     Route::post('/create_mentor',[AppController::class, 'createMentor']);
     Route::put('/update_mentor/{mentor_id}',[AppController::class, 'updateMentor']);
     //schedule transaction handle

@@ -82,10 +82,9 @@ class AuthController extends Controller
                 ],200);
             }
         }else{
-                return response()->json([
-                    'msg' => 'logout failed'
-                ],401);
+            return response()->json([
+                'msg' => 'logout failed'
+            ],401);
         }
     }
-
 }
