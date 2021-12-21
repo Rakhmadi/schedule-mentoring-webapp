@@ -1,7 +1,9 @@
-import { createApp } from 'vue'
+//resources/js/app.js
 
+import { createApp } from "vue";
 
-//import root components 
- import App from './App.vue'
-const app = createApp(App)
-app.mount('#app')
+import App from "./App.vue";
+
+createApp(App).mount("#app");
+
+require("./bootstrap");
