@@ -25,7 +25,7 @@
             </div>
     </div>
     <main class="mx-48 mt-7 font-bold block pt-14">
-        <h1 class="text-4xl text-gray-600">Schedule</h1>
+        <router-view></router-view>
     </main>
 </template>
 
