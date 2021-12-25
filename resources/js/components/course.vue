@@ -3,7 +3,7 @@
         <div class="flex mb-8 items-center justify-between">
                 <h1 class="text-gray-600 font-medium text-5xl">Course.</h1>
 
-                <button @click="$router.push({path:'/schedule'})" class="menu transition ease-in-out delay-75 rounded-full bg-blue-200 hover:bg-blue-300 text-blue-600 font-medium w-max h-max py-1 px-3 mr-2 my-1 ">
+                <button @click="$router.push({path:'/course_new'})" class="menu transition ease-in-out delay-75 rounded-full bg-blue-200 hover:bg-blue-300 text-blue-600 font-medium w-max h-max py-1 px-3 my-1 ">
                     <span class="p-0 m-0">Create new</span>
                 </button>
         </div>

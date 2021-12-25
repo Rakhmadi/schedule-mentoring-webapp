@@ -1,20 +1,39 @@
 import {createRouter,createWebHashHistory} from 'vue-router'
+import wellcome from './components/wellcome.vue';
+
+import course from './components/course.vue';
+import courseNew from './components/courseNew.vue';
+import courseEdit from './components/courseEdit.vue';
+
+import mentor from './components/mentor.vue';
+import mentorNew from './components/mentorNew.vue';
+
+import schedule from './components/schedule.vue';
 
 const router = createRouter({
     history : createWebHashHistory(),
     routes : [
         {
             path : '/',
-            component : import('./components/wellcome.vue')
+            component : wellcome
         },{
             path : '/course',
-            component : import('./components/course.vue')
+            component : course
+        },{
+            path: '/course_new',
+            component : courseNew
+        },{
+            path: '/course_edit/:code_course',
+            component : courseEdit
         },{
             path : '/mentor',
-            component : import('./components/mentor.vue')
+            component : mentor
+        },{
+            path : '/mentor_new',
+            component : mentorNew
         },{
             path : '/schedule',
-            component : import('./components/schedule.vue')
+            component : schedule
         }
     ]
 })

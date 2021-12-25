@@ -58,10 +58,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return _ctx.$router.push({
-        path: '/schedule'
+        path: '/course_new'
       });
     }),
-    "class": "menu transition ease-in-out delay-75 rounded-full bg-blue-200 hover:bg-blue-300 text-blue-600 font-medium w-max h-max py-1 px-3 mr-2 my-1"
+    "class": "menu transition ease-in-out delay-75 rounded-full bg-blue-200 hover:bg-blue-300 text-blue-600 font-medium w-max h-max py-1 px-3 my-1"
   }, _hoisted_5)]), _hoisted_6]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto\">\r\n  <div class=\"animate-pulse flex space-x-4\">\r\n    <div class=\"flex-1 space-y-6 py-1\">\r\n      <div class=\"space-y-3\">\r\n        <div class=\"grid grid-cols-3 gap-4\">\r\n          <div class=\"h-2 bg-gray-200 rounded col-span-2\"></div>\r\n          <div class=\"h-2 bg-gray-200 rounded col-span-1\"></div>\r\n        </div>\r\n        <div class=\"h-2 bg-gray-200 rounded\"></div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div> ")], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   );
