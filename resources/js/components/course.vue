@@ -8,21 +8,21 @@
                 </button>
         </div>
         <div class="">
-            <div v-for="item in $store.state.dataCourse" :key="item.code_course" class="rounded-lg bg-white p-5 my-3 border border-gray-200 flex flex-col sm:flex-col md:flex-row justify-between">
+            <div v-for="item in $store.state.dataCourse" :key="item.course_code" class="rounded-lg bg-white p-5 my-3 border border-gray-200 flex flex-col sm:flex-col md:flex-row justify-between">
                 <div>
                     <h1 class="text-gray-600 text-3xl font-medium mb-4">{{item.course_name}}</h1>
                     <div class="mt-1 flex flex-row items-center">
                         <p  class="font-medium text-gray-600 text-sm">Course Category</p>
-                        <div class="rounded-full mx-2 text-xs px-2 py-0.5 bg-blue-200  border-blue-600 text-blue-600 w-max ">Advance</div>
+                        <div class="rounded-full mx-2 text-xs px-2 py-0.5 bg-blue-200  border-blue-600 text-blue-600 w-max ">{{item.course_category}}</div>
                     </div>
                     <div class="mt-1 flex flex-row items-center">
                         <p  class="font-medium text-gray-600 text-sm">Course Level</p>
-                        <div class="rounded-full mx-2 text-xs px-2 py-0.5 bg-blue-200  border-blue-600 text-blue-600 w-max ">Advance</div>
+                        <category-lable :category="item.course_level"></category-lable>
                     </div>
                 </div>
                 <div class="flex items-end">
                     <div class="mt-2 md:mt-0">
-                        <button class="rounded-full bg-blue-200 p-2 mx-1 mt-1">
+                        <button class="rounded-full bg-blue-200 p-2 mx-1 mt-1" @click="$router.push({path:`/course_edit/${item.course_code}`})">
                             <i class="text-blue-500">
                                 <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                                     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -58,7 +58,12 @@
 </div> -->
 </template>
 <script>
+import categoryLableVue from "./categoryLable.vue";
+
 export default {
+    components:{
+        'categoryLable' : categoryLableVue
+    },
     mounted(){
         this.$store.dispatch('getCourseData');
     },
