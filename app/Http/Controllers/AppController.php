@@ -15,7 +15,7 @@ class AppController extends Controller
         $val = Validator::make($r->all(),[
             'course_name' => 'required',
             'course_category' => 'required|in:itc,language,math',
-            'course_level' => 'required|in:basic,intermidate,advance'
+            'course_level' => 'required|in:basic,intermediate,advance'
         ]);
         
         if (!$val->fails()) {

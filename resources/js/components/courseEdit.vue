@@ -1,5 +1,5 @@
 <template>
-    <div class="h-full mt-24 flex flex-col">
+    <div class="h-full mt-24 flex flex-col"  data-aos="fade-zoom-in">
         <div class="flex items-center justify-between">
                 <h1 class="text-gray-600 font-medium text-5xl">Edit Course.</h1>
                 <button @click="$router.push({path:'/course'})" class="menu transition ease-in-out delay-75 rounded-full bg-blue-200 hover:bg-blue-300 text-blue-600 font-medium w-max h-max py-1 px-3 my-1 ">

@@ -46,7 +46,7 @@ const store = createStore({
                     'Content-type' : 'application/json',
                     'Authorization' : `Bearer $2y$10$dhw46zOcR9HYajh3bdtMBej3fqArSzkOhSgvFR6fTzj3X.w2.eGTG`
                 })
-            }).then(x=>json()).then(x=>{
+            }).then(x=>x.json()).then(x=>{
                 ctx.dispatch('getCourseData')
             }).catch(err=>{
                 console.log(err)

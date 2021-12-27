@@ -1,5 +1,5 @@
 <template>
-    <div class="h-full mt-24 flex flex-col">
+    <div class="h-full mt-24 flex flex-col" data-aos="fade-zoom-in">
         <div class="flex mb-8 items-center justify-between">
                 <h1 class="text-gray-600 font-medium text-5xl">Course.</h1>
 
@@ -31,7 +31,7 @@
                                 </svg>
                             </i>
                         </button>
-                        <button class="rounded-full bg-red-200 p-2 mx-1 mt-1">
+                        <button @click="delDataCourse(item.course_code)" class="rounded-full bg-red-200 p-2 mx-1 mt-1">
                             <i class="text-red-500">
                                 <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                                     <path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
@@ -66,6 +66,13 @@ export default {
     },
     mounted(){
         this.$store.dispatch('getCourseData');
+    },
+    methods: {
+        delDataCourse(id){
+            this.$store.dispatch('deleteDataCourse',{
+                'id' : id
+            })
+        }
     },
     data(){
         return {
