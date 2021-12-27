@@ -10,18 +10,24 @@
             <form action="">
                <div class="flex flex-col">
                     <label for="" class="my-2 text-base font-normal text-gray-600">Course Name</label>
-                    <input type="text" name="" id="" class="bg-gray-100 px-3 py-2 rounded-lg outline-gray-200 text-gray-600">
+                    <input v-model="courseName" type="text" name="" id="" class="bg-gray-100 px-3 py-2 rounded-lg outline-gray-200 text-gray-600">
                </div>
                <div class="flex flex-col">
                     <label for="" class="my-2 text-base font-normal text-gray-600">Category Course</label>
-                    <select name="" id="" class="bg-gray-100 px-3 py-2 rounded-lg outline-gray-200 text-gray-600 block appearance-none">
-                        <option value="">dd</option>
+                    <select v-model="courseCategory" name="" id="" class="bg-gray-100 px-3 py-2 rounded-lg outline-gray-200 text-gray-600 block appearance-none">
+                        <option disable value="">Select Category</option>
+                        <option value="itc">ITC</option>
+                        <option value="language">Language</option>
+                        <option value="math">Math</option>
                     </select>
                </div>
                <div class="flex flex-col">
                     <label for="" class="my-2 text-base font-normal text-gray-600">Level Course</label>
-                    <select name="" id="" class="bg-gray-100 px-3 py-2 rounded-lg outline-gray-200 text-gray-600 block appearance-none">
-                        <option value="">dd</option>
+                    <select v-model="courseLevel" name="" id="" class="bg-gray-100 px-3 py-2 rounded-lg outline-gray-200 text-gray-600 block appearance-none">
+                        <option disable value="">Select Level</option>
+                        <option value="basic">Basic</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advance">Advance</option>
                     </select>
                </div>
                <button class="rounded-lg bg-blue-500 text-white px-3 py-2 mt-3 mr-3 font-medium text-base">Create</button>
@@ -35,7 +41,14 @@
 export default {
     mounted(){
         console.log('sd');
-    }
+    },
+    data(){
+        return {
+            courseName : '',
+            courseCategory: '',
+            courseLevel : ''
+        }
+    },
 }
 </script>
 
