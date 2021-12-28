@@ -31,16 +31,19 @@
                     </select>
                </div>
                <button @click.prevent="saveData()" class="rounded-lg bg-blue-500 text-white px-3 py-2 mt-3 mr-3 font-medium text-base">Create</button>
-               <button class="rounded-lg bg-yellow-300 text-gryal-600 px-3 py-2 mt-3 mr-3 font-medium text-base" type="reset">Reset</button>
+               <button @click="n()" class="rounded-lg bg-yellow-300 text-gryal-600 px-3 py-2 mt-3 mr-3 font-medium text-base" type="reset">Reset</button>
 
             </form>
         </div>
     </div>
 </template>
 <script>
-export default {
-    mounted(){
-        console.log('sd');
+  import { useToast } from "vue-toastification";
+
+  export default {
+    setup() {
+      const toast = useToast();
+      return { toast }
     },
     data(){
         return {
@@ -54,6 +57,8 @@ export default {
                 'course_name' : this.courseName,
                 'course_category' : this.courseCategory,
                 'course_level' : this.courseLevel
+            }).then(x=>{
+                console.log(x)
             })
         }
     },

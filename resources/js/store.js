@@ -32,6 +32,7 @@ const store = createStore({
                 }),
                 body : JSON.stringify(data)
             }).then(x=>x.json()).then(x=>{
+                
                 ctx.dispatch('getCourseData')
                 return x
             }).catch(err=>{
