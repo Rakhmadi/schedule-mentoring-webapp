@@ -1,4 +1,7 @@
 import { createStore } from 'vuex'
+import { useToast } from "vue-toastification";
+import router from './router'
+const toast = useToast();
 
 const store = createStore({
     state(){
@@ -34,6 +37,10 @@ const store = createStore({
             }).then(x=>x.json()).then(x=>{
                 
                 ctx.dispatch('getCourseData')
+                toast.success(`Course "${data.course_name}" Created`, {
+                    timeout: 4000
+                });
+                router.push({path:'/course'})
                 return x
             }).catch(err=>{
                 console.log(err)
@@ -49,6 +56,9 @@ const store = createStore({
                 })
             }).then(x=>x.json()).then(x=>{
                 ctx.dispatch('getCourseData')
+                toast.success(`Course Deleted`, {
+                    timeout: 4000
+                });
             }).catch(err=>{
                 console.log(err)
             })

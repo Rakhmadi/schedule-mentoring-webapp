@@ -22742,9 +22742,7 @@ __webpack_require__.r(__webpack_exports__);
         'course_name': this.courseName,
         'course_category': this.courseCategory,
         'course_level': this.courseLevel
-      }).then(function (x) {
-        console.log(x);
-      });
+      }).then(function (x) {});
     }
   }
 });
@@ -23615,9 +23613,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vue_toastification__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-toastification */ "./node_modules/vue-toastification/dist/index.mjs");
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
 
-var store = (0,vuex__WEBPACK_IMPORTED_MODULE_0__.createStore)({
+
+
+var toast = (0,vue_toastification__WEBPACK_IMPORTED_MODULE_0__.useToast)();
+var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
   state: function state() {
     return {
       dataCourse: [],
@@ -23652,6 +23655,12 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_0__.createStore)({
         return x.json();
       }).then(function (x) {
         ctx.dispatch('getCourseData');
+        toast.success("Course \"".concat(data.course_name, "\" Created"), {
+          timeout: 4000
+        });
+        _router__WEBPACK_IMPORTED_MODULE_1__["default"].push({
+          path: '/course'
+        });
         return x;
       })["catch"](function (err) {
         console.log(err);
@@ -23669,6 +23678,9 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_0__.createStore)({
         return x.json();
       }).then(function (x) {
         ctx.dispatch('getCourseData');
+        toast.success("Course Deleted", {
+          timeout: 4000
+        });
       })["catch"](function (err) {
         console.log(err);
       });
