@@ -23652,16 +23652,17 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
         }),
         body: JSON.stringify(data)
       }).then(function (x) {
+        if (x.status === 200) {
+          ctx.dispatch('getCourseData');
+          toast.success("Course \"".concat(data.course_name, "\" Created"), {
+            timeout: 4000
+          });
+          _router__WEBPACK_IMPORTED_MODULE_1__["default"].push({
+            path: '/course'
+          });
+        }
+
         return x.json();
-      }).then(function (x) {
-        ctx.dispatch('getCourseData');
-        toast.success("Course \"".concat(data.course_name, "\" Created"), {
-          timeout: 4000
-        });
-        _router__WEBPACK_IMPORTED_MODULE_1__["default"].push({
-          path: '/course'
-        });
-        return x;
       })["catch"](function (err) {
         console.log(err);
       });

@@ -34,14 +34,15 @@ const store = createStore({
                     'Authorization' :  `Bearer $2y$10$dhw46zOcR9HYajh3bdtMBej3fqArSzkOhSgvFR6fTzj3X.w2.eGTG`,
                 }),
                 body : JSON.stringify(data)
-            }).then(x=>x.json()).then(x=>{
-                
-                ctx.dispatch('getCourseData')
-                toast.success(`Course "${data.course_name}" Created`, {
-                    timeout: 4000
-                });
-                router.push({path:'/course'})
-                return x
+            }).then(x=>{
+                if(x.status === 200){
+                    ctx.dispatch('getCourseData')
+                    toast.success(`Course "${data.course_name}" Created`, {
+                        timeout: 4000
+                    });
+                    router.push({path:'/course'})
+                }
+                return x.json()
             }).catch(err=>{
                 console.log(err)
             })

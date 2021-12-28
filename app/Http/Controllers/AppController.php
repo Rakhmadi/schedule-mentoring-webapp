@@ -56,7 +56,7 @@ class AppController extends Controller
     }
 
     public function showCourse(){
-        $x = Course::all();
+        $x = Course::orderBy('created_at','DESC')->get();
         return response()->json($x,200);
     }
 
