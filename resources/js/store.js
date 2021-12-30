@@ -64,6 +64,27 @@ const store = createStore({
                 console.log(err)
             })
         },
+        updateDataCourse(ctx,data){
+            fetch(`api/update_course/${data.id}`,{
+                method : 'PUT',
+                headers : new Headers({
+                    'Accept' : 'application/json',
+                    'Content-type' : 'application/json',
+                    'Authorization' : `Bearer $2y$10$dhw46zOcR9HYajh3bdtMBej3fqArSzkOhSgvFR6fTzj3X.w2.eGTG`
+                }),
+                body : JSON.stringify(data.dataUpdate)
+            })
+            .then(x=>x.json())
+            .then(x=>{
+                ctx.dispatch('getCourseData')
+                toast.success(`Course "${data.course_name}" Updated`, {
+                    timeout: 4000
+                });
+                router.push({path:'/course'})
+            }).catch(err=>{
+
+            })
+        },
         getMentorData(ctx){
             fetch('/api/show_mentor',{
                 method: 'GET',
