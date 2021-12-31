@@ -22705,9 +22705,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {},
+  data: function data() {
+    return {
+      courseName: '',
+      courseCategory: '',
+      courseLevel: ''
+    };
+  },
   methods: {
-    updatedCourse: function updatedCourse() {
-      ssss;
+    updateCourse: function updateCourse() {
+      this.store.dispatch('updateDataCourse', {
+        'id': this.$route.params.course_code,
+        'dataUpdate': {
+          'course_name': this.courseName,
+          'course_category': this.courseCategory,
+          'course_level': this.courseLevel
+        }
+      });
     }
   }
 });
@@ -22956,7 +22970,7 @@ var _hoisted_6 = {
   "class": ""
 };
 var _hoisted_7 = {
-  "class": "text-gray-600 text-3xl font-medium mb-4"
+  "class": "text-gray-600 text-3xl font-medium mb-3"
 };
 var _hoisted_8 = {
   "class": "mt-1 flex flex-row items-center"
@@ -22964,7 +22978,7 @@ var _hoisted_8 = {
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "font-medium text-gray-600 text-sm"
-}, "Course Category", -1
+}, "Category", -1
 /* HOISTED */
 );
 
@@ -22977,7 +22991,7 @@ var _hoisted_11 = {
 
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "font-medium text-gray-600 text-sm"
-}, "Course Level", -1
+}, "Level", -1
 /* HOISTED */
 );
 
@@ -23121,7 +23135,8 @@ var _hoisted_8 = {
   "class": ""
 };
 var _hoisted_9 = {
-  action: ""
+  action: "",
+  ref: "form"
 };
 
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
@@ -23214,12 +23229,6 @@ var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_24 = [_hoisted_20, _hoisted_21, _hoisted_22, _hoisted_23];
 
 var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "rounded-lg bg-blue-500 text-white px-3 py-2 mt-3 mr-3 font-medium text-base"
-}, "Edit", -1
-/* HOISTED */
-);
-
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "rounded-lg bg-yellow-300 text-gryal-600 px-3 py-2 mt-3 mr-3 font-medium text-base",
   type: "reset"
 }, "Reset", -1
@@ -23238,23 +23247,32 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return _ctx.courseCategory = $event;
+      return $data.courseCategory = $event;
     }),
     name: "",
     id: "",
     "class": "bg-gray-100 px-3 py-2 rounded-lg outline-gray-200 text-gray-600 block appearance-none"
   }, _hoisted_17, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.courseCategory]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.courseCategory]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-      return _ctx.courseLevel = $event;
+      return $data.courseLevel = $event;
     }),
     name: "",
     id: "",
     "class": "bg-gray-100 px-3 py-2 rounded-lg outline-gray-200 text-gray-600 block appearance-none"
   }, _hoisted_24, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.courseLevel]])]), _hoisted_25, _hoisted_26])])]);
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.courseLevel]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClik: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+      return $options.updateCourse();
+    }, ["prevent"])),
+    "class": "rounded-lg bg-blue-500 text-white px-3 py-2 mt-3 mr-3 font-medium text-base"
+  }, "Edit", 32
+  /* HYDRATE_EVENTS */
+  ), _hoisted_25], 512
+  /* NEED_PATCH */
+  )])]);
 }
 
 /***/ }),
@@ -23823,7 +23841,7 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
           'Content-type': 'application/json',
           'Authorization': "Bearer $2y$10$dhw46zOcR9HYajh3bdtMBej3fqArSzkOhSgvFR6fTzj3X.w2.eGTG"
         }),
-        body: JSON.stringify(data)
+        body: JSON.stringify(data.dataUpdate)
       }).then(function (x) {
         return x.json();
       }).then(function (x) {

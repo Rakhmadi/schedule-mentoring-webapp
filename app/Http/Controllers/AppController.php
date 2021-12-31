@@ -55,6 +55,11 @@ class AppController extends Controller
         }
     }
 
+    public function singleCourse($id){
+        Course::where('course_code')->get();
+
+    }
+
     public function showCourse(){
         $x = Course::orderBy('created_at','DESC')->get();
         return response()->json($x,200);

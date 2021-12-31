@@ -10,7 +10,7 @@
                 <h1 class="text-gray-600 font-medium text-xl">Code Course "{{$route.params.code_course}}"</h1>
         </div>
         <div class="">
-            <form action="">
+            <form action="" ref="form">
                <div class="flex flex-col">
                     <label for="" class="my-2 text-base font-normal text-gray-600">Course Name</label>
                     <input type="text" name="" id="" class="bg-gray-100 px-3 py-2 rounded-lg outline-gray-200 text-gray-600">
@@ -33,7 +33,7 @@
                         <option value="advance">Advance</option>
                     </select>
                </div>
-               <button class="rounded-lg bg-blue-500 text-white px-3 py-2 mt-3 mr-3 font-medium text-base">Edit</button>
+               <button @clik.prevent="updateCourse()" class="rounded-lg bg-blue-500 text-white px-3 py-2 mt-3 mr-3 font-medium text-base">Edit</button>
                <button class="rounded-lg bg-yellow-300 text-gryal-600 px-3 py-2 mt-3 mr-3 font-medium text-base" type="reset">Reset</button>
 
             </form>
@@ -53,7 +53,7 @@ export default {
         }
     },
     methods : {
-        updatedCourse() {
+        updateCourse() {
             this.store.dispatch('updateDataCourse',{
                 'id' : this.$route.params.course_code,
                 'dataUpdate' : {

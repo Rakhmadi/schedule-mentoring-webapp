@@ -10,13 +10,13 @@
         <div class="">
             <div v-for="item in $store.state.dataCourse" :key="item.course_code" class="rounded-lg bg-white p-5 my-3 border border-gray-200 flex flex-col sm:flex-col md:flex-row justify-between">
                 <div>
-                    <h1 class="text-gray-600 text-3xl font-medium mb-4">{{item.course_name}}</h1>
+                    <h1 class="text-gray-600 text-3xl font-medium mb-3">{{item.course_name}}</h1>
                     <div class="mt-1 flex flex-row items-center">
-                        <p  class="font-medium text-gray-600 text-sm">Course Category</p>
+                        <p  class="font-medium text-gray-600 text-sm">Category</p>
                         <div class="rounded-full mx-2 text-xs px-2 py-0.5 bg-blue-200  border-blue-600 text-blue-600 w-max ">{{item.course_category}}</div>
                     </div>
                     <div class="mt-1 flex flex-row items-center">
-                        <p  class="font-medium text-gray-600 text-sm">Course Level</p>
+                        <p  class="font-medium text-gray-600 text-sm">Level</p>
                         <category-lable :category="item.course_level"></category-lable>
                     </div>
                 </div>
