@@ -7,6 +7,7 @@ const store = createStore({
     state(){
         return {
             dataCourse : [],
+            dataSingleCourse : [],
             dataMentor : []
         }
     },
@@ -21,6 +22,20 @@ const store = createStore({
             .then(x=>x.json())
             .then(x=>{
                 ctx.state.dataCourse = x
+            }).catch(err=>{
+                console.log(err)
+            })
+        },
+        getSingleDataCourse(ctx,data){
+            return fetch(`api/single_course/${data.id}`,{
+                method : 'GET',
+                headers : new Headers({
+                    'Accept' : 'application/json',
+                    'Content-type' : 'application/json',
+                    'Authorization' : `Bearer $2y$10$dhw46zOcR9HYajh3bdtMBej3fqArSzkOhSgvFR6fTzj3X.w2.eGTG`
+                })
+            }).then(x=>x.json()).then(x=>{
+                ctx.state.dataSingleCourse = x
             }).catch(err=>{
                 console.log(err)
             })
@@ -77,12 +92,12 @@ const store = createStore({
             .then(x=>x.json())
             .then(x=>{
                 ctx.dispatch('getCourseData')
-                toast.success(`Course "${data.course_name}" Updated`, {
+                toast.success(`Course "${data.dataUpdate.course_name}" Updated`, {
                     timeout: 4000
                 });
                 router.push({path:'/course'})
             }).catch(err=>{
-
+                console.log(err)
             })
         },
         getMentorData(ctx){

@@ -22704,18 +22704,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  mounted: function mounted() {},
+  beforeMount: function beforeMount() {
+    var _this = this;
+
+    this.$store.dispatch('getSingleDataCourse', {
+      'id': this.$route.params.code_course
+    }).then(function () {
+      _this.singleCourseData = _this.$store.state.dataSingleCourse;
+      _this.courseName = _this.singleCourseData.course_name;
+      _this.courseCategory = _this.singleCourseData.course_category;
+      _this.courseLevel = _this.singleCourseData.course_level;
+    });
+  },
   data: function data() {
     return {
       courseName: '',
       courseCategory: '',
-      courseLevel: ''
+      courseLevel: '',
+      singleCourseData: []
     };
   },
   methods: {
     updateCourse: function updateCourse() {
-      this.store.dispatch('updateDataCourse', {
-        'id': this.$route.params.course_code,
+      this.$store.dispatch('updateDataCourse', {
+        'id': this.$route.params.code_course,
         'dataUpdate': {
           'course_name': this.courseName,
           'course_category': this.courseCategory,
@@ -23138,97 +23150,97 @@ var _hoisted_9 = {
   action: "",
   ref: "form"
 };
-
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "flex flex-col"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "",
-  "class": "my-2 text-base font-normal text-gray-600"
-}, "Course Name"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "text",
-  name: "",
-  id: "",
-  "class": "bg-gray-100 px-3 py-2 rounded-lg outline-gray-200 text-gray-600"
-})], -1
-/* HOISTED */
-);
-
-var _hoisted_11 = {
+var _hoisted_10 = {
   "class": "flex flex-col"
 };
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "",
+  "class": "my-2 text-base font-normal text-gray-600"
+}, "Course Name", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  "class": "flex flex-col"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "",
   "class": "my-2 text-base font-normal text-gray-600"
 }, "Category Course", -1
 /* HOISTED */
 );
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_14 = ["value"];
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   disable: "",
   value: ""
 }, "Select Category", -1
 /* HOISTED */
 );
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "itc"
 }, "ITC", -1
 /* HOISTED */
 );
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "language"
 }, "Language", -1
 /* HOISTED */
 );
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "math"
 }, "Math", -1
 /* HOISTED */
 );
 
-var _hoisted_17 = [_hoisted_13, _hoisted_14, _hoisted_15, _hoisted_16];
-var _hoisted_18 = {
+var _hoisted_19 = [_hoisted_15, _hoisted_16, _hoisted_17, _hoisted_18];
+var _hoisted_20 = {
   "class": "flex flex-col"
 };
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "",
   "class": "my-2 text-base font-normal text-gray-600"
 }, "Level Course", -1
 /* HOISTED */
 );
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_22 = ["value"];
+
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   disable: "",
   value: ""
 }, "Select Level", -1
 /* HOISTED */
 );
 
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "basic"
 }, "Basic", -1
 /* HOISTED */
 );
 
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "intermediate"
 }, "Intermediate", -1
 /* HOISTED */
 );
 
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "advance"
 }, "Advance", -1
 /* HOISTED */
 );
 
-var _hoisted_24 = [_hoisted_20, _hoisted_21, _hoisted_22, _hoisted_23];
+var _hoisted_27 = [_hoisted_23, _hoisted_24, _hoisted_25, _hoisted_26];
 
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "rounded-lg bg-yellow-300 text-gryal-600 px-3 py-2 mt-3 mr-3 font-medium text-base",
   type: "reset"
 }, "Reset", -1
@@ -23245,32 +23257,42 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "menu transition ease-in-out delay-75 rounded-full bg-blue-200 hover:bg-blue-300 text-blue-600 font-medium w-max h-max py-1 px-3 my-1"
   }, _hoisted_5)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_7, "Code Course \"" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$route.params.code_course) + "\"", 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    name: "",
+    id: "",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.courseName = $event;
+    }),
+    "class": "bg-gray-100 px-3 py-2 rounded-lg outline-gray-200 text-gray-600"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.courseName]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.courseCategory = $event;
     }),
+    value: $data.singleCourseData.course_category,
     name: "",
-    id: "",
+    id: "select_1`",
     "class": "bg-gray-100 px-3 py-2 rounded-lg outline-gray-200 text-gray-600 block appearance-none"
-  }, _hoisted_17, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.courseCategory]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
-    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+  }, _hoisted_19, 8
+  /* PROPS */
+  , _hoisted_14), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.courseCategory]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $data.courseLevel = $event;
     }),
+    value: $data.singleCourseData.course_level,
     name: "",
-    id: "",
+    id: "select_2",
     "class": "bg-gray-100 px-3 py-2 rounded-lg outline-gray-200 text-gray-600 block appearance-none"
-  }, _hoisted_24, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.courseLevel]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    onClik: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+  }, _hoisted_27, 8
+  /* PROPS */
+  , _hoisted_22), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.courseLevel]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
       return $options.updateCourse();
     }, ["prevent"])),
     "class": "rounded-lg bg-blue-500 text-white px-3 py-2 mt-3 mr-3 font-medium text-base"
-  }, "Edit", 32
-  /* HYDRATE_EVENTS */
-  ), _hoisted_25], 512
+  }, "Edit"), _hoisted_28], 512
   /* NEED_PATCH */
   )])]);
 }
@@ -23771,6 +23793,7 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
   state: function state() {
     return {
       dataCourse: [],
+      dataSingleCourse: [],
       dataMentor: []
     };
   },
@@ -23785,6 +23808,22 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
         return x.json();
       }).then(function (x) {
         ctx.state.dataCourse = x;
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    getSingleDataCourse: function getSingleDataCourse(ctx, data) {
+      return fetch("api/single_course/".concat(data.id), {
+        method: 'GET',
+        headers: new Headers({
+          'Accept': 'application/json',
+          'Content-type': 'application/json',
+          'Authorization': "Bearer $2y$10$dhw46zOcR9HYajh3bdtMBej3fqArSzkOhSgvFR6fTzj3X.w2.eGTG"
+        })
+      }).then(function (x) {
+        return x.json();
+      }).then(function (x) {
+        ctx.state.dataSingleCourse = x;
       })["catch"](function (err) {
         console.log(err);
       });
@@ -23846,13 +23885,15 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
         return x.json();
       }).then(function (x) {
         ctx.dispatch('getCourseData');
-        toast.success("Course \"".concat(data.course_name, "\" Updated"), {
+        toast.success("Course \"".concat(data.dataUpdate.course_name, "\" Updated"), {
           timeout: 4000
         });
         _router__WEBPACK_IMPORTED_MODULE_1__["default"].push({
           path: '/course'
         });
-      })["catch"](function (err) {});
+      })["catch"](function (err) {
+        console.log(err);
+      });
     },
     getMentorData: function getMentorData(ctx) {
       fetch('/api/show_mentor', {
