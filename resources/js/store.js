@@ -112,6 +112,41 @@ const store = createStore({
             }).catch(err=>{
                 console.log(err)
             })
+        },saveDataMentor(ctx,data){
+            return fetch('api/create_mentor',{
+                method : 'POST',
+                headers : new Headers({
+                    'Accept' : 'application/json',
+                    'Content-type' : 'application/json',
+                    'Authorization' : `Bearer $2y$10$dhw46zOcR9HYajh3bdtMBej3fqArSzkOhSgvFR6fTzj3X.w2.eGTG`
+                }),
+                body : JSON.stringify(data)
+            }).then(x=>x.json()).then(x=>{
+                ctx.state.dataMentor = x
+                ctx.dispatch('getMentorData')
+                toast.success(`Mentor "${data.mentor_name}" Created`, {
+                    timeout: 4000
+                });
+                router.push({path:'/mentor'})
+            }).catch(err=>{
+                console.log(err)
+            })
+        },deleteMentor(ctx,data){
+            fetch(`api/delete_mentor/${data.id}`,{
+                method : 'DELETE',
+                headers : new Headers({
+                    'Accept' : 'application/json',
+                    'Content-type' : 'application/json',
+                    'Authorization' : `Bearer $2y$10$dhw46zOcR9HYajh3bdtMBej3fqArSzkOhSgvFR6fTzj3X.w2.eGTG`
+                })
+            }).then(x=>x.json()).then(x=>{
+                ctx.dispatch('getMentorData')
+                toast.success(`Mentor Deleted`, {
+                    timeout: 4000
+                });
+            }).catch(err=>{
+                console.log(err)
+            })
         }
     }
 })
