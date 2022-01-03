@@ -137,6 +137,11 @@ class AppController extends Controller
         }
     }
 
+    public function singleMentor($mentor_id){
+        $x = Mentor::where('mentor_id',$mentor_id)->first();
+        return response()->json($x,200);
+    }
+
     public function createSchedule(Request $r){
         $val = Validator::make($r->all(),[
             'mentor_id' => 'required',

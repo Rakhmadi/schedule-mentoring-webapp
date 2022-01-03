@@ -7,6 +7,7 @@ import courseEdit from './components/courseEdit.vue';
 
 import mentor from './components/mentor.vue';
 import mentorNew from './components/mentorNew.vue';
+import mentorEdit from './components/mentorEdit.vue';
 
 import schedule from './components/schedule.vue';
 
@@ -31,6 +32,9 @@ const router = createRouter({
         },{
             path : '/mentor_new',
             component : mentorNew
+        },{
+            path : '/mentor_edit/:mentor_id',
+            component : mentorEdit
         },{
             path : '/schedule',
             component : schedule

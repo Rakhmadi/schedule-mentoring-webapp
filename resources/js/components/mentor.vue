@@ -39,7 +39,7 @@
                 </div>
                 <div class="flex items-end">
                     <div class="mt-2 md:mt-0">
-                        <button class="rounded-full bg-blue-200 p-2 mx-1 mt-1">
+                        <button @click="$router.push({path:`/mentor_edit/${item.mentor_id}`})" class="rounded-full bg-blue-200 p-2 mx-1 mt-1">
                             <i class="text-blue-500">
                                 <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                                     <svg style="width:24px;height:24px" viewBox="0 0 24 24">

@@ -8,7 +8,8 @@ const store = createStore({
         return {
             dataCourse : [],
             dataSingleCourse : [],
-            dataMentor : []
+            dataMentor : [],
+            dataSingleMentor : []
         }
     },
     actions:{
@@ -147,7 +148,40 @@ const store = createStore({
             }).catch(err=>{
                 console.log(err)
             })
-        }
+        },getSingleDataMentor(ctx,data){
+            return fetch(`api/single_mentor/${data.id}`,{
+                method : 'GET',
+                headers : new Headers({
+                    'Accept' : 'application/json',
+                    'Content-type' : 'application/json',
+                    'Authorization' : `Bearer $2y$10$dhw46zOcR9HYajh3bdtMBej3fqArSzkOhSgvFR6fTzj3X.w2.eGTG`
+                })
+            }).then(x=>x.json()).then(x=>{
+                ctx.state.dataSingleMentor = x
+            }).catch(err=>{
+                console.log(err)
+            })
+        },updateDataMentor(ctx,data){
+            fetch(`api/update_mentor/${data.id}`,{
+                method : 'PUT',
+                headers : new Headers({
+                    'Accept' : 'application/json',
+                    'Content-type' : 'application/json',
+                    'Authorization' : `Bearer $2y$10$dhw46zOcR9HYajh3bdtMBej3fqArSzkOhSgvFR6fTzj3X.w2.eGTG`
+                }),
+                body : JSON.stringify(data.dataUpdate)
+            })
+            .then(x=>x.json())
+            .then(()=>{
+                ctx.dispatch('getCourseData')
+                toast.success(`Mentor "${data.dataUpdate.mentor_name}" Updated`, {
+                    timeout: 4000
+                });
+                router.push({path:'/mentor'})
+            }).catch(err=>{
+                console.log(err)
+            })
+        },
     }
 })
 
