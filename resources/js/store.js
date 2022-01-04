@@ -9,7 +9,10 @@ const store = createStore({
             dataCourse : [],
             dataSingleCourse : [],
             dataMentor : [],
-            dataSingleMentor : []
+            dataSingleMentor : [],
+            dataSchedule : [],
+
+
         }
     },
     actions:{
@@ -181,7 +184,20 @@ const store = createStore({
             }).catch(err=>{
                 console.log(err)
             })
-        },
+        },getScheduleData(ctx){
+            return fetch('api/show_schedule/',{
+                method : 'GET',
+                headers: new Headers({
+                    'Authorization' : `Bearer $2y$10$dhw46zOcR9HYajh3bdtMBej3fqArSzkOhSgvFR6fTzj3X.w2.eGTG`
+                })
+            }).then(x=>x.json())
+            .then(x=>{
+                ctx.state.dataSchedule = x
+                console.log(x);
+            }).catch(err=>{
+                console.log(err)
+            })
+        }
     }
 })
 
