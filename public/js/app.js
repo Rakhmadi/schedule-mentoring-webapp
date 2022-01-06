@@ -24714,7 +24714,6 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
         return x.json();
       }).then(function (x) {
         ctx.state.dataSchedule = x;
-        console.log(x);
       })["catch"](function (err) {
         console.log(err);
       });

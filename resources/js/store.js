@@ -193,7 +193,6 @@ const store = createStore({
             }).then(x=>x.json())
             .then(x=>{
                 ctx.state.dataSchedule = x
-                console.log(x);
             }).catch(err=>{
                 console.log(err)
             })
