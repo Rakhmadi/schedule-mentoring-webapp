@@ -174,6 +174,11 @@ class AppController extends Controller
         return response()->json($x,200);
     }
 
+    public function singleSchedule($schedule_id){
+        $x = Schedule::where('schedule_id',$schedule_id)->first();
+        return response()->json($x,200);
+    }
+
     public function deleteSchedule($schedule_id){
         $x = Schedule::where('schedule_id',$schedule_id);
         if ($x->exists()) {

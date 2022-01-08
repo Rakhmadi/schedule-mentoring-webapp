@@ -31,6 +31,7 @@ Route::group(['middleware'=>['verifyToken']],function(){
     Route::get('/show_course',[AppController::class, 'showCourse']);
     Route::put('/update_course/{course_code}',[AppController::class, 'updateCourse']);
     Route::get('/single_course/{course_code}',[AppController::class,'singleCourse']);
+    
     //mentor handle
     Route::get('/show_mentor',[Appcontroller::class, 'showMentor']);
     Route::delete('/delete_mentor/{mentor_id}',[AppController::class, 'deleteMentor']);
@@ -41,6 +42,7 @@ Route::group(['middleware'=>['verifyToken']],function(){
     //schedule transaction handle
     Route::post('/create_schedule', [AppController::class, 'createSchedule']);
     Route::get('/show_schedule', [AppController::class, 'showSchedule']);
+    Route::get('/single_schedule/{schedule_id}', [AppController::class, 'singleSchedule']);
     Route::delete('/delete_schedule/{schedule_id}', [AppController::class, 'deleteSchedule']);
     Route::put('/update_schedule/{schedule_id}',[AppController::class, 'updateSchedule']);
 });

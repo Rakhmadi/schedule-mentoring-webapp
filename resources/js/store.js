@@ -11,8 +11,6 @@ const store = createStore({
             dataMentor : [],
             dataSingleMentor : [],
             dataSchedule : [],
-
-
         }
     },
     actions:{
