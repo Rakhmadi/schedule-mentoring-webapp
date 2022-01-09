@@ -17,4 +17,12 @@ class Schedule extends Model
         "start_time",
         "finish_time"
     ];
+
+    public function mentor(){
+        return $this->belongsTo(Mentor::class,'mentor_id','mentor_id');
+    }
+
+    public function course(){
+        return $this->belongsTo(Course::class,'course_code','course_code');
+    }
 }

@@ -170,7 +170,7 @@ class AppController extends Controller
     }
 
     public function showSchedule(){
-        $x = Schedule::all();
+        $x = Schedule::with(['mentor','course'])->get();
         return response()->json($x,200);
     }
 
