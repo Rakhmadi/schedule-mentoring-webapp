@@ -8,27 +8,27 @@
                 </button>
         </div>
         <div class="">
-            <div class="rounded-lg bg-white p-5 my-3 border border-gray-200 flex flex-col sm:flex-col md:flex-row justify-between">
+            <div v-for="item in DataSchedule" :key="item.schedule_id" class="rounded-lg bg-white p-5 my-3 border border-gray-200 flex flex-col sm:flex-col md:flex-row justify-between">
                 <div>
-                    <h1 class="text-gray-600 text-3xl font-medium leading-none">CourseNmae</h1>
-                    <h2 class="text-gray-600 text-base font-medium leading-none">name mentor</h2>
-                    <h3 class="text-gray-600 text-xs font-medium leading-none">nani@nani.com</h3>
+                    <h1 class="text-gray-600 text-3xl font-medium leading-none">{{item.course.course_name}}</h1>
+                    <h2 class="text-gray-600 text-base font-medium leading-none">{{item.mentor.mentor_name}}</h2>
+                    <h3 class="text-gray-600 text-xs font-medium leading-none">{{item.mentor.email}}</h3>
 
                     <div class="mt-1 flex flex-row items-center">
                         <p  class="font-medium text-gray-600 text-sm ">Category</p>
-                        <div class="rounded-full mx-2 text-xs px-2 py-0.5 bg-blue-200  border-blue-600 text-blue-600 w-max "></div>
+                        <div class="rounded-full mx-2 text-xs px-2 py-0.5 bg-blue-200  border-blue-600 text-blue-600 w-max ">{{item.course.course_category}}</div>
                     </div>
                     <div class="mt-1 flex flex-row items-center">
                         <p  class="font-medium text-gray-600 text-sm">Level</p>
-                        <category-lable :category="`advance`"></category-lable>
+                        <category-lable :category="item.course.course_level"></category-lable>
                     </div>
                     <div class="mt-1 flex flex-row items-center">
                         <p  class="font-medium text-gray-600 text-sm ">Date</p>
-                        <div class="rounded-full mx-2 text-xs px-2 py-0.5 bg-blue-200  border-blue-600 text-blue-600 w-max ">YYYY-MM-DD</div>
+                        <div class="rounded-full mx-2 text-xs px-2 py-0.5 bg-white  border-blue-600 text-gray-600 w-max ">{{getDate(item.schedule_date)}}</div>
                     </div>
                     <div class="mt-1 flex flex-row items-center">
                         <p  class="font-medium text-gray-600 text-sm ">Time</p>
-                        <div class="rounded-full mx-2 text-xs px-2 py-0.5 bg-blue-200  border-blue-600 text-blue-600 w-max ">YYYY-MM-DD</div>
+                        <div class="rounded-full mx-2 text-xs px-2 py-0.5 bg-white  border-blue-600 text-gray-600 w-max ">{{item.start_time}} - {{item.finish_time}}</div>
                     </div>
                 </div>
                 <div class="flex items-end">
@@ -78,7 +78,7 @@ export default {
     },
     mounted(){
         this.$store.dispatch('getScheduleData').then(()=>{
-            console.log(this.$store.state.dataSchedule);
+            this.DataSchedule = this.$store.state.dataSchedule
         });
         console.log(this.getDate('2021-05-05'))
     },
@@ -94,7 +94,7 @@ export default {
     },
     data(){
         return {
-            DataSchedule : this.$store.state.dataSchedule
+            DataSchedule : []
         }
     },
 }
