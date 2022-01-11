@@ -8,16 +8,27 @@
                 </button>
         </div>
         <div class="">
-            <div v-for="item in $store.state.dataCourse" :key="item.course_code" class="rounded-lg bg-white p-5 my-3 border border-gray-200 flex flex-col sm:flex-col md:flex-row justify-between">
+            <div class="rounded-lg bg-white p-5 my-3 border border-gray-200 flex flex-col sm:flex-col md:flex-row justify-between">
                 <div>
-                    <h1 class="text-gray-600 text-3xl font-medium mb-3">{{item.course_name}}</h1>
+                    <h1 class="text-gray-600 text-3xl font-medium leading-none">CourseNmae</h1>
+                    <h2 class="text-gray-600 text-base font-medium leading-none">name mentor</h2>
+                    <h3 class="text-gray-600 text-xs font-medium leading-none">nani@nani.com</h3>
+
                     <div class="mt-1 flex flex-row items-center">
-                        <p  class="font-medium text-gray-600 text-sm">Category</p>
-                        <div class="rounded-full mx-2 text-xs px-2 py-0.5 bg-blue-200  border-blue-600 text-blue-600 w-max ">{{item.course_category}}</div>
+                        <p  class="font-medium text-gray-600 text-sm ">Category</p>
+                        <div class="rounded-full mx-2 text-xs px-2 py-0.5 bg-blue-200  border-blue-600 text-blue-600 w-max "></div>
                     </div>
                     <div class="mt-1 flex flex-row items-center">
                         <p  class="font-medium text-gray-600 text-sm">Level</p>
-                        <category-lable :category="item.course_level"></category-lable>
+                        <category-lable :category="`advance`"></category-lable>
+                    </div>
+                    <div class="mt-1 flex flex-row items-center">
+                        <p  class="font-medium text-gray-600 text-sm ">Date</p>
+                        <div class="rounded-full mx-2 text-xs px-2 py-0.5 bg-blue-200  border-blue-600 text-blue-600 w-max ">YYYY-MM-DD</div>
+                    </div>
+                    <div class="mt-1 flex flex-row items-center">
+                        <p  class="font-medium text-gray-600 text-sm ">Time</p>
+                        <div class="rounded-full mx-2 text-xs px-2 py-0.5 bg-blue-200  border-blue-600 text-blue-600 w-max ">YYYY-MM-DD</div>
                     </div>
                 </div>
                 <div class="flex items-end">
@@ -59,26 +70,31 @@
 </template>
 <script>
 import categoryLableVue from "./categoryLable.vue";
+import moment from 'moment'
 
 export default {
     components:{
         'categoryLable' : categoryLableVue
     },
     mounted(){
-        this.$store.dispatch('getCourseData');
-        this.$store.dispatch('getScheduleData');
-        console.log(this.$store.state.dataSchedule);
+        this.$store.dispatch('getScheduleData').then(()=>{
+            console.log(this.$store.state.dataSchedule);
+        });
+        console.log(this.getDate('2021-05-05'))
     },
     methods: {
         delDataCourse(id){
             this.$store.dispatch('deleteDataCourse',{
                 'id' : id
             })
+        },
+        getDate(date){
+            return moment(date).format("dddd, MMMM Do YYYY")
         }
     },
     data(){
         return {
-
+            DataSchedule : this.$store.state.dataSchedule
         }
     },
 }
