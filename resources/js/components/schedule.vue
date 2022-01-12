@@ -11,7 +11,7 @@
             <div v-for="item in DataSchedule" :key="item.schedule_id" class="rounded-lg bg-white p-5 my-3 border border-gray-200 flex flex-col sm:flex-col md:flex-row justify-between">
                 <div>
                     <h1 class="text-gray-600 text-3xl font-medium leading-none">{{item.course.course_name}}</h1>
-                    <h2 class="text-gray-600 text-base font-medium leading-none">{{item.mentor.mentor_name}}</h2>
+                    <h2 class="text-gray-600 text-base font-medium leading-none mt-2">{{item.mentor.mentor_name}}</h2>
                     <h3 class="text-gray-600 text-xs font-medium leading-none">{{item.mentor.email}}</h3>
 
                     <div class="mt-1 flex flex-row items-center">

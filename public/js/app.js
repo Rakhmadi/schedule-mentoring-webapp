@@ -24208,7 +24208,7 @@ var _hoisted_7 = {
   "class": "text-gray-600 text-3xl font-medium leading-none"
 };
 var _hoisted_8 = {
-  "class": "text-gray-600 text-base font-medium leading-none"
+  "class": "text-gray-600 text-base font-medium leading-none mt-2"
 };
 var _hoisted_9 = {
   "class": "text-gray-600 text-xs font-medium leading-none"
