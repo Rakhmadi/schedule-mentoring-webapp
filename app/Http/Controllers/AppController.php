@@ -146,7 +146,7 @@ class AppController extends Controller
         $val = Validator::make($r->all(),[
             'mentor_id' => 'required',
             'course_code' => 'required',
-            'schedule_date' => 'required|date|date_format:d/m/Y',
+            'schedule_date' => 'required|date|date_format:Y-m-d',
             'start_time' => 'required|date_format:H:i',
             'finish_time' => 'required|date_format:H:i'
         ]);

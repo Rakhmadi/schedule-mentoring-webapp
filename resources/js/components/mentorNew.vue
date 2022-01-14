@@ -60,7 +60,6 @@ export default {
                 'phone' : this.phone,
                 'address' : this.address,
                 'email' : this.email
-
             })
         }
     }

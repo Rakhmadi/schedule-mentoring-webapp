@@ -10,6 +10,8 @@ import mentorNew from './components/mentorNew.vue';
 import mentorEdit from './components/mentorEdit.vue';
 
 import schedule from './components/schedule.vue';
+import scheduleNew from './components/scheduleNew.vue';
+import scheduleEdit from './components/scheduleEdit.vue';
 
 const router = createRouter({
     history : createWebHashHistory(),
@@ -38,6 +40,12 @@ const router = createRouter({
         },{
             path : '/schedule',
             component : schedule
+        },{
+            path : '/schedule_new',
+            component : scheduleNew
+        },{
+            path : '/schedule_edit/:schedule_id',
+            component : scheduleEdit
         }
     ]
 })

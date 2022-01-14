@@ -194,6 +194,26 @@ const store = createStore({
             }).catch(err=>{
                 console.log(err)
             })
+        },
+        saveSchedule(ctx,data){
+            return fetch('api/create_schedule',{
+                method : 'POST',
+                headers : new Headers({
+                    'Accept' : 'application/json',
+                    'Content-type' : 'application/json',
+                    'Authorization' : `Bearer $2y$10$dhw46zOcR9HYajh3bdtMBej3fqArSzkOhSgvFR6fTzj3X.w2.eGTG`
+                }),
+                body : JSON.stringify(data)
+            }).then(x=>x.json()).then(x=>{
+                ctx.state.dataSchedule = x
+                ctx.dispatch('dataSchedule')
+                toast.success(`Schedule Created`, {
+                    timeout: 4000
+                });
+                router.push({path:'/schedule'})
+            }).catch(err=>{
+                console.log(err)
+            })
         }
     }
 })
