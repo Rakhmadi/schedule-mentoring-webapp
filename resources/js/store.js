@@ -11,6 +11,8 @@ const store = createStore({
             dataMentor : [],
             dataSingleMentor : [],
             dataSchedule : [],
+            dataSingleShedule : [],
+
         }
     },
     actions:{
@@ -179,6 +181,19 @@ const store = createStore({
                     timeout: 4000
                 });
                 router.push({path:'/mentor'})
+            }).catch(err=>{
+                console.log(err)
+            })
+        },getSingleDataSchedule(ctx,data){
+            return fetch(`api/single_schedule/${data.id}`,{
+                method : 'GET',
+                headers : new Headers({
+                    'Accept' : 'application/json',
+                    'Content-type' : 'application/json',
+                    'Authorization' : `Bearer $2y$10$dhw46zOcR9HYajh3bdtMBej3fqArSzkOhSgvFR6fTzj3X.w2.eGTG`
+                })
+            }).then(x=>x.json()).then(x=>{
+                ctx.state.dataSingleSchedule = x
             }).catch(err=>{
                 console.log(err)
             })
