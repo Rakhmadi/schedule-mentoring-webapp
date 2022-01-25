@@ -23017,12 +23017,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     updateCourse: function updateCourse() {
-      this.$store.dispatch('updateDataCourse', {
-        'id': this.$route.params.code_course,
+      this.$store.dispatch('updateDataSchedule', {
+        'id': this.$route.params.schedule_id,
         'dataUpdate': {
-          'course_name': this.courseName,
-          'course_category': this.courseCategory,
-          'course_level': this.courseLevel
+          'start_time': this.startTime,
+          'finish_time': this.finishTime,
+          'schedule_date': this.date,
+          'mentor_id': this.mentor_id,
+          'course_code': this.course_code
         }
       });
     }
@@ -24720,7 +24722,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.date]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-      return _ctx.saveData();
+      return $options.updateCourse();
     }, ["prevent"])),
     "class": "rounded-lg bg-blue-500 text-white px-3 py-2 mt-3 mr-3 font-medium text-base"
   }, "Edit"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -25384,6 +25386,29 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
         ctx.state.dataSchedule = x;
         ctx.dispatch('dataSchedule');
         toast.success("Schedule Created", {
+          timeout: 4000
+        });
+        _router__WEBPACK_IMPORTED_MODULE_1__["default"].push({
+          path: '/schedule'
+        });
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    updateDataSchedule: function updateDataSchedule(ctx, data) {
+      fetch("api/update_schedule/".concat(data.id), {
+        method: 'PUT',
+        headers: new Headers({
+          'Accept': 'application/json',
+          'Content-type': 'application/json',
+          'Authorization': "Bearer $2y$10$dhw46zOcR9HYajh3bdtMBej3fqArSzkOhSgvFR6fTzj3X.w2.eGTG"
+        }),
+        body: JSON.stringify(data.dataUpdate)
+      }).then(function (x) {
+        return x.json();
+      }).then(function () {
+        ctx.dispatch('getScheduleDate');
+        toast.success("Schedule Updated", {
           timeout: 4000
         });
         _router__WEBPACK_IMPORTED_MODULE_1__["default"].push({

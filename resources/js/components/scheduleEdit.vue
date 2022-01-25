@@ -35,7 +35,7 @@
                     <label for="" class="my-2 text-base font-normal text-gray-600">Date</label>
                     <input v-model="date" type="date" name="" id="" class="bg-gray-100 px-3 py-2 rounded-lg outline-gray-200 text-gray-600">
                </div>
-               <button @click.prevent="saveData()" class="rounded-lg bg-blue-500 text-white px-3 py-2 mt-3 mr-3 font-medium text-base">Edit</button>
+               <button @click.prevent="updateCourse()" class="rounded-lg bg-blue-500 text-white px-3 py-2 mt-3 mr-3 font-medium text-base">Edit</button>
                <button @click="n()" class="rounded-lg bg-yellow-300 text-gryal-600 px-3 py-2 mt-3 mr-3 font-medium text-base" type="reset">Reset</button>
 
             </form>
@@ -72,12 +72,14 @@ export default {
     },
     methods : {
         updateCourse() {
-            this.$store.dispatch('updateDataCourse',{
-                'id' : this.$route.params.code_course,
+            this.$store.dispatch('updateDataSchedule',{
+                'id' : this.$route.params.schedule_id,
                 'dataUpdate' : {
-                    'course_name' : this.courseName,
-                    'course_category' : this.courseCategory,
-                    'course_level' : this.courseLevel
+                    'start_time' : this.startTime,
+                    'finish_time' : this.finishTime,
+                    'schedule_date' : this.date,
+                    'mentor_id' : this.mentor_id,
+                    'course_code' : this.course_code
                 }
             })
         },

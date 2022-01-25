@@ -229,6 +229,26 @@ const store = createStore({
             }).catch(err=>{
                 console.log(err)
             })
+        },updateDataSchedule(ctx,data){
+            fetch(`api/update_schedule/${data.id}`,{
+                method : 'PUT',
+                headers : new Headers({
+                    'Accept' : 'application/json',
+                    'Content-type' : 'application/json',
+                    'Authorization' : `Bearer $2y$10$dhw46zOcR9HYajh3bdtMBej3fqArSzkOhSgvFR6fTzj3X.w2.eGTG`
+                }),
+                body : JSON.stringify(data.dataUpdate)
+            })
+            .then(x=>x.json())
+            .then(()=>{
+                ctx.dispatch('getScheduleDate')
+                toast.success(`Schedule Updated`, {
+                    timeout: 4000
+                });
+                router.push({path:'/schedule'})
+            }).catch(err=>{
+                console.log(err)
+            })
         }
     }
 })
